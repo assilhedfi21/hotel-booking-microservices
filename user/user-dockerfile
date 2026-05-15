@@ -1,0 +1,14 @@
+FROM node:20-alpine@sha256:2d5e75b53c8e0b3a8e3e0e8e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e
+
+WORKDIR /app
+
+COPY package.json .
+RUN npm install --production
+
+COPY . .
+
+RUN mkdir -p data
+
+EXPOSE 50051
+
+CMD ["node", "index.js"]
